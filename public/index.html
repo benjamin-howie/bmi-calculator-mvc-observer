@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Simple BMI</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="default-width">
+      <h1>BMI Calculator</h1>
+      <p>Enter details below</p>
+      <form class="bmi-calculator" method="post" action="#">
+        <div id="metric-section">
+          <fieldset class="height-metric">
+            <legend>Height</legend>
+            <select name="height-cm" id="height-cm">
+              <option value=""></option>
+            </select>
+            <label for="height-cm">height in cm</label>
+          </fieldset>
+          <fieldset class="weight-metric">
+            <legend>Weight</legend>
+            <select name="weight-kg" id="weight-kg">
+              <option value=""></option>
+            </select>
+            <label for="weight-kg">Weight in kg</label>
+          </fieldset>
+        </div>
+        <!-- IMPERIAL -->
+        <div id="imperial-section">
+          <fieldset class="height-imperial">
+            <legend>Height</legend>
+            <select name="height-ft" id="height-ft">
+              <option value=""></option>
+            </select>
+            <label for="height-ft">height in ft</label>
+            <select name="height-in" id="height-in">
+              <option value=""></option>
+            </select>
+            <label for="height-in">height in inches</label>
+          </fieldset>
+          <fieldset class="weight-imperial">
+            <legend>Weight</legend>
+            <select name="weight-st" id="weight-st">
+              <option value=""></option>
+            </select>
+            <label for="weight-st">Weight in stone</label>
+            <select name="weight-pounds" id="weight-pounds">
+              <option value=""></option>
+            </select>
+            <label for="weight-pounds">Weight in pounds</label>
+          </fieldset>
+        </div>
+
+        <fieldset>
+          <legend>Units of measurement</legend>
+          <input type="radio" id="imperial" name="unit-type" value="imperial" />
+          <label for="imperial">Imperial</label>
+          <input
+            type="radio"
+            id="metric"
+            name="unit-type"
+            value="metric"
+            checked
+          />
+          <label for="metric">Metric</label>
+        </fieldset>
+      </form>
+      <div class="bmi-result">
+        <h2>Results:</h2>
+        <p>Your BMI is: <span class="bmi-result-number"></span></p>
+        <p>This means that you are: <span class="bmi-result-text"></span></p>
+      </div>
+    </main>
+    <footer class="footer"></footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>

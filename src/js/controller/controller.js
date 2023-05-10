@@ -3,44 +3,22 @@ class Controller {
     this.model = model;
     this.view = view;
 
-    const changeData = (modelProperty) => {
-      // modelProperty example: "heightCm"
-      return (newData) => {
-        this.model[modelProperty] = +newData; // Converting newData to a Number as this value will come from the DOM as a string.
-      };
-    };
+    // TO-DO: Consider re-factor of the below.
 
-    this.view.bindOnSelectChange(
-      this.view.heightCmElem,
-      changeData('heightCm')
-    );
-    this.view.bindOnSelectChange(
-      this.view.heightFtElem,
-      changeData('heightFt')
-    );
-    this.view.bindOnSelectChange(
-      this.view.heightInchesElem,
-      changeData('heightInches')
-    );
-    this.view.bindOnSelectChange(
-      this.view.weightKgElem,
-      changeData('weightKg')
-    );
-    this.view.bindOnSelectChange(
-      this.view.weightStElem,
-      changeData('weightSt')
-    );
-    this.view.bindOnSelectChange(
-      this.view.weightPoundsElem,
-      changeData('weightPounds')
-    );
-
-    this.view.bindOnUnitChange((unitVal) => {
-      // Set the current unit type to the checked radio button. Reset the model values and the view values.
-      this.model.currentUnitType = unitVal;
-      this.model.reset();
-      this.view.reset();
+    this.view.bindOnFormChange((eventTarget) => {
+      // If the captured event has "unit" data attribute (e.g. "heightCm"), assign the new value of this to the model.
+      if (eventTarget.dataset.unit) {
+        this.model[eventTarget.dataset.unit] = +eventTarget.value; // Convert to Number
+      } else if (eventTarget.name === 'unit-type') {
+        // If this is coming from the unit-type radio button, change the current unit type.
+        this.model.currentUnitType = eventTarget.value;
+        this.model.reset();
+        this.view.reset();
+      } else {
+        return;
+      }
     });
+
     this.model.addObserver(this.view); // View will observe changes on the model.
     this.model.notify(this.model.data); // Initial render.
   }

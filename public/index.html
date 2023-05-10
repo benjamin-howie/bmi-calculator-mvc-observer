@@ -11,18 +11,18 @@
     <main class="default-width">
       <h1>BMI Calculator</h1>
       <p>Enter details below</p>
-      <form class="bmi-calculator" method="post" action="#">
+      <form id="bmi-calculator" method="post" action="#">
         <div id="metric-section">
           <fieldset class="height-metric">
             <legend>Height</legend>
-            <select name="height-cm" id="height-cm">
+            <select data-unit="heightCm" name="height-cm" id="height-cm">
               <option value=""></option>
             </select>
             <label for="height-cm">height in cm</label>
           </fieldset>
           <fieldset class="weight-metric">
             <legend>Weight</legend>
-            <select name="weight-kg" id="weight-kg">
+            <select data-unit="weightKg" name="weight-kg" id="weight-kg">
               <option value=""></option>
             </select>
             <label for="weight-kg">Weight in kg</label>
@@ -32,22 +32,26 @@
         <div id="imperial-section">
           <fieldset class="height-imperial">
             <legend>Height</legend>
-            <select name="height-ft" id="height-ft">
+            <select data-unit="heightFt" name="height-ft" id="height-ft">
               <option value=""></option>
             </select>
             <label for="height-ft">height in ft</label>
-            <select name="height-in" id="height-in">
+            <select data-unit="heightInches" name="height-in" id="height-in">
               <option value=""></option>
             </select>
             <label for="height-in">height in inches</label>
           </fieldset>
           <fieldset class="weight-imperial">
             <legend>Weight</legend>
-            <select name="weight-st" id="weight-st">
+            <select data-unit="weightSt" name="weight-st" id="weight-st">
               <option value=""></option>
             </select>
             <label for="weight-st">Weight in stone</label>
-            <select name="weight-pounds" id="weight-pounds">
+            <select
+              data-unit="weightPounds"
+              name="weight-pounds"
+              id="weight-pounds"
+            >
               <option value=""></option>
             </select>
             <label for="weight-pounds">Weight in pounds</label>

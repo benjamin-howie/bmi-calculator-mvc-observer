@@ -4,6 +4,8 @@ class View extends Observer {
   constructor() {
     super();
 
+    this.form = document.querySelector('#bmi-calculator');
+
     this.selectData = {
       // This data will be used to determine the <option> tags.
       heightCm: {
@@ -44,10 +46,6 @@ class View extends Observer {
       const selectObj = this.selectData[property];
       this.#renderFormOptions(selectObj.elem, selectObj.min, selectObj.max);
     }
-
-    // Unit Type Radio Buttons -- the radio buttons that are used to switch between Imperial and Metric.
-
-    this.unitTypeRadio = document.querySelectorAll('input[name="unit-type"]');
 
     // Unit Types Fieldsets -- the field sets which house the <select> elements for Imperial and Metric
 
@@ -122,17 +120,9 @@ class View extends Observer {
 
   // EVENT LISTENERS -- These methods are exposed and handled by the Controller where the handler is set.
 
-  bindOnUnitChange(handler) {
-    this.unitTypeRadio.forEach((radio) => {
-      radio.addEventListener('change', (e) => {
-        handler(e.target.value);
-      });
-    });
-  }
-
-  bindOnSelectChange(elem, handler) {
-    elem.addEventListener('change', (e) => {
-      handler(e.target.value);
+  bindOnFormChange(handler) {
+    this.form.addEventListener('change', (e) => {
+      handler(e.target);
     });
   }
 
